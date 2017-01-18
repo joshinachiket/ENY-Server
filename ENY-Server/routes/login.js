@@ -2,7 +2,8 @@
  * New node file
  */
 var mongo = require("./mongo");
-var mongoURL = "mongodb://localhost:27017/EnyDatabaseMongoDB";
+//var mongoURL = "mongodb://localhost:27017/EnyDatabaseMongoDB";
+var mongoSessionConnectURL = "mongodb://heroku_x4rwn6l8:nc5ua8377vca7ihtdt1pni05c9@ds117909.mlab.com:17909/heroku_x4rwn6l8";
 var ejs = require("ejs");
 
 exports.checkLogin = function(req, res) {
