@@ -5,7 +5,6 @@ var mongo = require("./mongo");
 var mongoURL = "mongodb://localhost:27017/EnyDatabaseMongoDB";
 //var mongoSessionConnectURL = "mongodb://heroku_x4rwn6l8:nc5ua8377vca7ihtdt1pni05c9@ds117909.mlab.com:17909/heroku_x4rwn6l8";
 var ejs = require("ejs");
-const JSON = require('circular-json');
 
 exports.containerstatus = function(req, res) {
 	var uid = req.body.uid;
@@ -20,11 +19,10 @@ exports.containerstatus = function(req, res) {
 		collection_containers.find({uid : uid}
 			, function(err, cntrs) {
 			if (cntrs) {
-				//console.log(cntrs);
-				const json = JSON.stringify(cntrs);
+				console.log(cntrs);
 				json_responses = {
 					"statusCode" : 1000,
-					"containers" : {json}
+					"containers" : cntrs
 				};
 				res.send(json_responses);
 
@@ -37,7 +35,6 @@ exports.containerstatus = function(req, res) {
 			}
 		});
 	});
-
 }
 
 
