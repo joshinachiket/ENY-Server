@@ -57,6 +57,7 @@ app.get('/homepage',login.redirectToHomepage);
 //POST REQUESTS
 app.post('/checklogin', login.checkLogin);
 app.post('/register', login.register);
+app.post('/registercontainer', login.registercontainer);
 app.post('/logout', login.logout);
 
 //connect to the mongo collection session and then createServer

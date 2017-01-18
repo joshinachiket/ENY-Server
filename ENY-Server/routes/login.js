@@ -112,3 +112,45 @@ exports.register = function(req, res) {
 		});
 	});
 };
+
+exports.registercontainer = function(req, res) {
+	// These two variables come from the form on
+	// the views/login.hbs page
+	var tagId 			= req.param("tagId");
+	var content_desc 	= req.param("content_desc");
+	var max_qty 		= req.param("max_qty");
+	var uid 			= req.param("uid");
+
+	console.log(req);
+
+	var json_responses;
+
+	mongo.connect(mongoURL, function() {
+		console.log('CONNECTED TO MONGO AT: ' + mongoURL);
+		var collection_containers = mongo.collection('containers');
+
+		collection_containers.insert({
+			tagId 		: tagId,
+			content_desc: content_desc,
+			max_qty 	: max_qty,
+			uid			: uid
+		}, function(err, user) {
+			if (user) {
+				// This way subsequent requests will know the user is logged in.
+				req.session.username = user.username;
+				console.log(req.session.username + " IS THE SESSION OWNER");
+				json_responses = {
+					"statusCode" : 200
+				};
+				res.send(json_responses);
+
+			} else {
+				console.log("FALSE");
+				json_responses = {
+					"statusCode" : 401
+				};
+				res.send(json_responses);
+			}
+		});
+	});
+};
