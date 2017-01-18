@@ -2,9 +2,10 @@
  * New node file
  */
 var mongo = require("./mongo");
-//var mongoURL = "mongodb://localhost:27017/EnyDatabaseMongoDB";
-var mongoSessionConnectURL = "mongodb://heroku_x4rwn6l8:nc5ua8377vca7ihtdt1pni05c9@ds117909.mlab.com:17909/heroku_x4rwn6l8";
+var mongoURL = "mongodb://localhost:27017/EnyDatabaseMongoDB";
+//var mongoSessionConnectURL = "mongodb://heroku_x4rwn6l8:nc5ua8377vca7ihtdt1pni05c9@ds117909.mlab.com:17909/heroku_x4rwn6l8";
 var ejs = require("ejs");
+var randomstring = require("randomstring");
 
 exports.checkLogin = function(req, res) {
 	// These two variables come from the webpage login.html
@@ -33,7 +34,6 @@ exports.checkLogin = function(req, res) {
 					"statusCode" : 200
 				};
 				res.send(json_responses);
-
 			} else {
 				console.log("FALSE");
 				json_responses = {
@@ -77,8 +77,9 @@ exports.register = function(req, res) {
 	var username = req.param("username");
 	var password = req.param("password");
 	var device_token = req.param("device_token");
+	var uid = randomstring.generate(6);
 
-	console.log(req);
+	console.log(req.params);
 
 	var json_responses;
 
@@ -91,21 +92,20 @@ exports.register = function(req, res) {
 			address 	: address,
 			username 	: username,
 			password 	: password,
-			device_token: device_token
+			device_token: device_token,
+			uid 		: uid
 		}, function(err, user) {
 			if (user) {
-				// This way subsequent requests will know the user is logged in.
-				req.session.username = user.username;
-				console.log(req.session.username + " IS THE SESSION OWNER");
 				json_responses = {
-					"statusCode" : 200
+					"statusCode" : 1000,
+					"uid"		 : uid
 				};
 				res.send(json_responses);
 
 			} else {
 				console.log("FALSE");
 				json_responses = {
-					"statusCode" : 401
+					"statusCode" : 999
 				};
 				res.send(json_responses);
 			}
