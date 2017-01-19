@@ -2,8 +2,8 @@
  * New node file
  */
 var mongo = require("./mongo");
-var mongoURL = "mongodb://localhost:27017/EnyDatabaseMongoDB";
-//var mongoSessionConnectURL = "mongodb://heroku_x4rwn6l8:nc5ua8377vca7ihtdt1pni05c9@ds117909.mlab.com:17909/heroku_x4rwn6l8";
+//var mongoURL = "mongodb://localhost:27017/EnyDatabaseMongoDB";
+var mongoURL = "mongodb://heroku_0z017gpr:dshkpnq53po2r0hgh4r3h8qjne@ds117909.mlab.com:17909/heroku_0z017gpr";
 var ejs = require("ejs");
 
 

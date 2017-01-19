@@ -9,8 +9,8 @@ var user			= require('./routes/user');
 var http			= require('http');
 var path			= require('path');
 
-var mongoSessionConnectURL = "mongodb://localhost:27017/EnyDatabaseMongoDB";
-//var mongoSessionConnectURL = "mongodb://heroku_x4rwn6l8:nc5ua8377vca7ihtdt1pni05c9@ds117909.mlab.com:17909/heroku_x4rwn6l8";
+//var mongoSessionConnectURL = "mongodb://localhost:27017/EnyDatabaseMongoDB";
+var mongoSessionConnectURL = "mongodb://heroku_0z017gpr:dshkpnq53po2r0hgh4r3h8qjne@ds117909.mlab.com:17909/heroku_0z017gpr";
 var expressSession = require("express-session");
 var mongoStore = require("connect-mongo")(expressSession);
 var mongo = require("./routes/mongo");
