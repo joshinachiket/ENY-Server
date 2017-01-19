@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "586063726338",
+    "firebase_url": "https://smartkitchen-72853.firebaseio.com",
+    "project_id": "smartkitchen-72853",
+    "storage_bucket": "smartkitchen-72853.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:586063726338:android:639cdcd8f76c2c77",
+        "android_client_info": {
+          "package_name": "com.enyteam.abc.smartkitchen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "586063726338-0tc17g4avve7i7qcmn9ci4fmrfq4de33.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQDL4YpH2tf9StE9SbbL1ASF9r8W8fJ30"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

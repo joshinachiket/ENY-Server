@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_order"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.enyteam.abc.smartkitchen.activity.OrderActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="460dp"
+        android:id="@+id/order_detail_view">
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:dividerHeight="5dp"
+            android:divider="@android:color/transparent"
+            android:descendantFocusability="afterDescendants"
+            android:layout_margin="5dp"
+            android:id="@+id/order_info">
+        </ListView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="#E6E6E6"
+        android:layout_below="@id/order_detail_view"
+        android:id="@+id/container_order_view">
+        <Button
+            android:layout_height="40dp"
+            android:layout_width="180dp"
+            android:text="@string/next_button"
+            android:layout_gravity="center"
+            android:background="@drawable/round_button"
+            android:layout_marginRight="20dp"
+            android:id="@+id/bt_next" />
+    </LinearLayout>
+</RelativeLayout>

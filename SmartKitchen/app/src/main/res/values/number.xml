@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="login_successful">1000</integer>
+    <integer name="login_failure">999</integer>
+    <integer name="registration_successful">1000</integer>
+
+    <integer name="app_notification_id">999</integer>
+</resources>
