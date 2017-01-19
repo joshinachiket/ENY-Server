@@ -1,8 +1,22 @@
 # Smart-Kitchen
 ENY-Hackathon
+<p align="center"><img src="https://github.com/joshinachiket/Smart-Kitchen/blob/master/Documents/SK-Logo.jpeg" width="40%" /></p>
 
 ##INTRODUCTION
 Hackathon Event That Could Foud AT : https://eny.devpost.com/
+
+Building an IoT- based android app which will help you to make your kitchen smarter by using ENY button and Newura SDK.<br>
+• We propose to use IoT proximity/weight sensors to map the day to day use of the container’s content in
+kitchen bottles supplies. (For demo we will simulate sensorical input on the html froent end managed in server.) <br>
+• This will be done by accessing the input obtained from the sensors and managing in the
+android dashboard.<br>
+• Automatic sending orders to favorite shops, getting status of your current kitchen supplies,
+generating many dashboard charts for a user supply usage details over a month or week giving
+the user chance to speculate on his/her usage habits.<br>
+• Aim is to bring the current status of your kitchen supplies on a press of a button to your
+android device.<br>
+• The Neura SDK will be iteratively used to know which user is at the nearest to a market place and 
+send him/her a text message of the things to buy.<br>
 
 ####ENY
 It is a button that simplifies our (users') lives by telling their smart home devices(Android App, IoT semsors) what to do. 
@@ -17,9 +31,11 @@ With users' consent, Neura will share contextual insights about users with third
 
 ## Project Deliverables
 
-[Idea Sheet]
+[Idea Sheet] (Documents/eny_idea.pdf)
 
 ##ARCHITECTURAL FLOW DIAGRAM
+<p align="center"><img src="https://github.com/joshinachiket/Smart-Kitchen/blob/master/Documents/ENY%20Architecture.jpeg" width="40%" /></p>
+
 
 ##	Technology Stack
 Java, Python(To detect ENY button press and to carry the signal to node server), node.JS, JavaScript, Android Studio, Android SDK, Git, Angular.JS, HTML and CSS.
