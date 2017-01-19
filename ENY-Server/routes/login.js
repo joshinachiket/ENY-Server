@@ -2,8 +2,10 @@
  * New node file
  */
 var mongo = require("./mongo");
+
 var mongoURL = "mongodb://localhost:27017/EnyDatabaseMongoDB";
 //var mongoSessionConnectURL = "mongodb://heroku_x4rwn6l8:nc5ua8377vca7ihtdt1pni05c9@ds117909.mlab.com:17909/heroku_x4rwn6l8";
+
 var ejs = require("ejs");
 var randomstring = require("randomstring");
 
@@ -106,6 +108,48 @@ exports.register = function(req, res) {
 				console.log("FALSE");
 				json_responses = {
 					"statusCode" : 999
+				};
+				res.send(json_responses);
+			}
+		});
+	});
+};
+
+exports.registercontainer = function(req, res) {
+	// These two variables come from the form on
+	// the views/login.hbs page
+	var tagId 			= req.param("tagId");
+	var content_desc 	= req.param("content_desc");
+	var max_qty 		= req.param("max_qty");
+	var uid 			= req.param("uid");
+
+	console.log(req);
+
+	var json_responses;
+
+	mongo.connect(mongoURL, function() {
+		console.log('CONNECTED TO MONGO AT: ' + mongoURL);
+		var collection_containers = mongo.collection('containers');
+
+		collection_containers.insert({
+			tagId 		: tagId,
+			content_desc: content_desc,
+			max_qty 	: max_qty,
+			uid			: uid
+		}, function(err, user) {
+			if (user) {
+				// This way subsequent requests will know the user is logged in.
+				req.session.username = user.username;
+				console.log(req.session.username + " IS THE SESSION OWNER");
+				json_responses = {
+					"statusCode" : 200
+				};
+				res.send(json_responses);
+
+			} else {
+				console.log("FALSE");
+				json_responses = {
+					"statusCode" : 401
 				};
 				res.send(json_responses);
 			}

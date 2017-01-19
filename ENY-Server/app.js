@@ -62,8 +62,10 @@ app.get('/buttonclicked', eny.buttonclicked);
 //POST REQUESTS
 app.post('/checklogin', login.checkLogin);
 app.post('/register', login.register);
+
 app.post('/registercontainer', container.registercontainer);
 app.post('/deregistercontainer', container.deregistercontainer);
+
 app.post('/logout', login.logout);
 app.post('/updatetoken', user.updatetoken);
 //app.post('/containerstatus', container.containerstatus);
