@@ -17,7 +17,7 @@ var mongo = require("./routes/mongo");
 var login = require("./routes/login");
 var container = require("./routes/container");
 var user = require("./routes/user");
-
+var eny = require("./routes/eny");
 
 var app = express();
 
@@ -56,6 +56,8 @@ if ('development' === app.get('env')) {
 app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/homepage',login.redirectToHomepage);
+app.get('/containerstatus/:uid', container.containerstatus);
+app.get('/buttonclicked', eny.buttonclicked);
 
 //POST REQUESTS
 app.post('/checklogin', login.checkLogin);
@@ -64,7 +66,10 @@ app.post('/registercontainer', container.registercontainer);
 app.post('/deregistercontainer', container.deregistercontainer);
 app.post('/logout', login.logout);
 app.post('/updatetoken', user.updatetoken);
-app.post('/containerstatus', container.containerstatus);
+//app.post('/containerstatus', container.containerstatus);
+
+
+
 
 //connect to the mongo collection session and then createServer
 mongo.connect(mongoSessionConnectURL, function(){

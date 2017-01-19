@@ -7,34 +7,45 @@ var mongoURL = "mongodb://localhost:27017/EnyDatabaseMongoDB";
 var ejs = require("ejs");
 
 exports.containerstatus = function(req, res) {
-	var uid = req.body.uid;
 
-	console.log(req.body);
+	var uid = req.param("uid");
+	console.log(uid);
 
 	var json_responses;
 
 	mongo.connect(mongoURL, function() {
-		console.log('CONNECTED TO MONGO AT: ' + mongoURL);
-		var collection_containers = mongo.collection('containers');
-		collection_containers.find({uid : uid}
-			, function(err, cntrs) {
-			if (cntrs) {
-				console.log(cntrs);
-				json_responses = {
-					"statusCode" : 1000,
-					"containers" : cntrs
-				};
-				res.send(json_responses);
-
-			} else {
-				console.log("FALSE");
-				json_responses = {
-					"statusCode" : 999
-				};
-				res.send(json_responses);
-			}
+	
+	console.log('CONNECTED TO MONGO AT: ' + mongoURL);
+	var collection_containers = mongo.collection('containers');	
+	collection_containers.find({uid : uid}, function(err, cursor){
+	    	cursor.toArray(function(err, items) {
+	                console.log(items);
+	                 res.send(items);
+	         });
 		});
+
 	});
+
+	/*
+	var uid = req.body.uid;
+	//var uid = req.param("uid");
+	console.log(req.param.uid);
+
+	var json_responses;
+
+	mongo.connect(mongoURL, function() {
+	
+		console.log('CONNECTED TO MONGO AT: ' + mongoURL);
+		var collection_containers = mongo.collection('containers');	
+		collection_containers.find({uid : uid}, function(err, cursor){
+	    	cursor.toArray(function(err, items) {
+	                console.log(items);
+	                 res.send(items);
+	         });
+		});
+
+	});
+	*/
 }
 
 

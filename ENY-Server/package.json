@@ -11,6 +11,7 @@
     "ejs": "*",
     "express": "3.2.6",
     "express-session": "^1.14.2",
+    "fcm-push": "^1.1.2",
     "mongodb": "^2.2.21",
     "randomstring": "^1.1.5"
   }
