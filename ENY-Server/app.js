@@ -9,12 +9,15 @@ var user			= require('./routes/user');
 var http			= require('http');
 var path			= require('path');
 
-//var mongoSessionConnectURL = "mongodb://localhost:27017/EnyDatabaseMongoDB";
-var mongoSessionConnectURL = "mongodb://heroku_x4rwn6l8:nc5ua8377vca7ihtdt1pni05c9@ds117909.mlab.com:17909/heroku_x4rwn6l8";
+var mongoSessionConnectURL = "mongodb://localhost:27017/EnyDatabaseMongoDB";
+//var mongoSessionConnectURL = "mongodb://heroku_x4rwn6l8:nc5ua8377vca7ihtdt1pni05c9@ds117909.mlab.com:17909/heroku_x4rwn6l8";
 var expressSession = require("express-session");
 var mongoStore = require("connect-mongo")(expressSession);
 var mongo = require("./routes/mongo");
 var login = require("./routes/login");
+var container = require("./routes/container");
+var user = require("./routes/user");
+var eny = require("./routes/eny");
 
 var app = express();
 
@@ -53,12 +56,22 @@ if ('development' === app.get('env')) {
 app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/homepage',login.redirectToHomepage);
+app.get('/containerstatus/:uid', container.containerstatus);
+app.get('/buttonclicked', eny.buttonclicked);
 
 //POST REQUESTS
 app.post('/checklogin', login.checkLogin);
 app.post('/register', login.register);
-app.post('/registercontainer', login.registercontainer);
+
+app.post('/registercontainer', container.registercontainer);
+app.post('/deregistercontainer', container.deregistercontainer);
+
 app.post('/logout', login.logout);
+app.post('/updatetoken', user.updatetoken);
+//app.post('/containerstatus', container.containerstatus);
+
+
+
 
 //connect to the mongo collection session and then createServer
 mongo.connect(mongoSessionConnectURL, function(){
