@@ -2,184 +2,184 @@
 <items version="2" >
 
     <item
-        is-multidex="false"
-        jar="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="0a0ef86b7fa568a52bf6214a0326ca1f1d618da7">
-        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-25.1.0_91c1aa9cc481f13fe061357b593ef7b5b838902d.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-25.1.0_4a5ad8c0cd5127a8a517cb1b2d3477de857e435e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="e79aa3d9a16f8c9f16377c0608de70a8f31e5d80">
-        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-25.1.0_02854959b0c3c638134531190f5ef6adbc8e884c.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="ca3c7aa31e2726a400a6e552b93cb9f63c9a1e6d">
-        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\pre-dexed\debug\com.android.support-support-compat-25.1.0_366d6be5d12d300dc60a30746f25098fa541666a.jar" />
-    </item>
-    <item
-        is-multidex="false"
+        is-multidex="true"
         jar="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\10.0.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="6116e0e7069de7fc259aac8e08b84f32c2038231">
-        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-analytics-impl-10.0.1_86803113a362e27d38396848a6801f2edd5effe5.jar" />
+        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-analytics-impl-10.0.1_86803113a362e27d38396848a6801f2edd5effe5\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="1630658fbc2d222b988603c27b4a4249586fbfe7">
-        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-25.1.0_ba0428fc9bf980f24f1227e7c4ddc5252f85b555.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\10.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="433f4d6aa5f21f19552afe0e6c5eff0fedba73ad">
-        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-analytics-10.0.1_0a3869198cd29de8a7eaa97db561c99da4acc610.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\exploded-aar\com.google.firebase\firebase-messaging\10.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="4b17463c814bdc562fb0392fa3494063623a0904">
-        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-messaging-10.0.1_fbd5b915cd969703780c93e709fd36973ca23171.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="2a53c4f3518116b8c6aee0e477233f0f7da8616f">
-        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-25.1.0_1eb4bc072b6e25721c3202a18e508cba0ca83e0e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="f02263e35e52668dd17b73bf961437e3d562b35f">
-        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-25.1.0_d9e3dc9b1cf04c09a358a401efe3127e07104596.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\10.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="486371f97baad8e607f332f20fee1d3dd00a731a">
-        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-iid-10.0.1_a7080873ef4c37ca3067cc72e561a6c640a350a8.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\exploded-aar\com.google.firebase\firebase-common\10.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="eb0d830e3eabb9deb9ec44869cf7ac7ea1ad794c">
-        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-common-10.0.1_84085a4678b627d550a6f33514d441d7da80358c.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="67647959cdd74ee9cfedeb18e52f9025205c2ac7">
-        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\pre-dexed\debug\instant-run-bootstrap_0149a166c0173c650c0502976653571d392f5163.jar" />
-    </item>
-    <item
-        is-multidex="false"
+        is-multidex="true"
         jar="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tasks\10.0.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="6addaba208e21c6da776d0ca75b6b23a6ccd5499">
-        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-tasks-10.0.1_bdb191620c68119cb2f3b87dd1e4d8f6974b930a.jar" />
+        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-tasks-10.0.1_bdb191620c68119cb2f3b87dd1e4d8f6974b930a\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="C:\Users\abc\.gradle\caches\modules-2\files-2.1\com.mcxiaoke.volley\library\1.0.19\a8f23f65fc1e522ee4a1a697ee569901a46741fa\library-1.0.19.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="a8f23f65fc1e522ee4a1a697ee569901a46741fa">
-        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\pre-dexed\debug\library-1.0.19_5924f91b15b0f50514462a6fdb358f40c417ca8f.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="6fb6ac3e8d3b9013819920d9ea11f3803c4c0033">
-        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-25.1.0_b0e4c0e5eaa5b58b98460d24f9612b7e88aed6e2.jar" />
-    </item>
-    <item
-        is-multidex="false"
+        is-multidex="true"
         jar="C:\Users\abc\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.1.0\support-annotations-25.1.0.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="64cb6b229a8bdfd907bc8dd46839a0053e4c018d">
-        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\pre-dexed\debug\support-annotations-25.1.0_24b3c26d2e04663037d2d8c444f6b555c651c65e.jar" />
+        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.1.0_24b3c26d2e04663037d2d8c444f6b555c651c65e\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="aee64634871d88a419d59eb743c1258a60f19700">
-        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-25.1.0_4d6d421e2fa1c4d4f99e2d36644ae97ba4a5ce95.jar" />
-    </item>
-    <item
-        is-multidex="false"
+        is-multidex="true"
         jar="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="f0cca5d0ec6d0ac1148265b1b80b8d0c3d2866aa">
-        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\pre-dexed\debug\instant-run_a9d6ff11cb892591a7e796a014849a20fea80d69.jar" />
+        sha1="60fdd897d7a356e92db4ffda26a32f3aacdc4264">
+        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_a9d6ff11cb892591a7e796a014849a20fea80d69\classes.dex" />
     </item>
     <item
-        is-multidex="false"
+        is-multidex="true"
+        jar="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\exploded-aar\com.google.firebase\firebase-messaging\10.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4b17463c814bdc562fb0392fa3494063623a0904">
+        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-messaging-10.0.1_fbd5b915cd969703780c93e709fd36973ca23171\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0a0ef86b7fa568a52bf6214a0326ca1f1d618da7">
+        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-25.1.0_91c1aa9cc481f13fe061357b593ef7b5b838902d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f02263e35e52668dd17b73bf961437e3d562b35f">
+        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-25.1.0_d9e3dc9b1cf04c09a358a401efe3127e07104596\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ca3c7aa31e2726a400a6e552b93cb9f63c9a1e6d">
+        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-25.1.0_366d6be5d12d300dc60a30746f25098fa541666a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e79aa3d9a16f8c9f16377c0608de70a8f31e5d80">
+        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-25.1.0_02854959b0c3c638134531190f5ef6adbc8e884c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2a53c4f3518116b8c6aee0e477233f0f7da8616f">
+        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-25.1.0_1eb4bc072b6e25721c3202a18e508cba0ca83e0e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\10.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="433f4d6aa5f21f19552afe0e6c5eff0fedba73ad">
+        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-analytics-10.0.1_0a3869198cd29de8a7eaa97db561c99da4acc610\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1630658fbc2d222b988603c27b4a4249586fbfe7">
+        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-25.1.0_ba0428fc9bf980f24f1227e7c4ddc5252f85b555\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\10.0.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="756f6297eef79784f5e356dcd4f39865028b2bd0">
-        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-basement-10.0.1_706f54c2db66a6892cd4f0e52a0f42e679a89604.jar" />
+        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-basement-10.0.1_706f54c2db66a6892cd4f0e52a0f42e679a89604\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6fb6ac3e8d3b9013819920d9ea11f3803c4c0033">
+        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-25.1.0_b0e4c0e5eaa5b58b98460d24f9612b7e88aed6e2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\abc\.gradle\caches\modules-2\files-2.1\com.mcxiaoke.volley\library\1.0.19\a8f23f65fc1e522ee4a1a697ee569901a46741fa\library-1.0.19.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a8f23f65fc1e522ee4a1a697ee569901a46741fa">
+        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\transforms\dex\debug\folders\1000\10\library-1.0.19_5924f91b15b0f50514462a6fdb358f40c417ca8f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f77808bc6ea7bcbd35d0f964e5314c09e5bf54bd">
+        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_0149a166c0173c650c0502976653571d392f5163\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\10.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="486371f97baad8e607f332f20fee1d3dd00a731a">
+        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-iid-10.0.1_a7080873ef4c37ca3067cc72e561a6c640a350a8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="aee64634871d88a419d59eb743c1258a60f19700">
+        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-25.1.0_4d6d421e2fa1c4d4f99e2d36644ae97ba4a5ce95\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-25.1.0_4a5ad8c0cd5127a8a517cb1b2d3477de857e435e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\exploded-aar\com.google.firebase\firebase-common\10.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="eb0d830e3eabb9deb9ec44869cf7ac7ea1ad794c">
+        <dex dex="D:\JetBrains_Android_IntelliJ\Projects\SmartKitchen\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-common-10.0.1_84085a4678b627d550a6f33514d441d7da80358c\classes.dex" />
     </item>
 
 </items>

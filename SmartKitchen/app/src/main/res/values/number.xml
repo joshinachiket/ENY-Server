@@ -5,4 +5,5 @@
     <integer name="registration_successful">1000</integer>
 
     <integer name="app_notification_id">999</integer>
+    <integer name="container_threshold_divider">3</integer>
 </resources>

@@ -7,7 +7,8 @@
     tools:context="com.enyteam.abc.smartkitchen.activity.OrderActivity">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="460dp"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/container_order_view"
         android:id="@+id/order_detail_view">
         <ListView
             android:layout_width="match_parent"
@@ -21,11 +22,11 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:orientation="horizontal"
         android:gravity="center"
         android:background="#E6E6E6"
-        android:layout_below="@id/order_detail_view"
+        android:layout_alignParentBottom="true"
         android:id="@+id/container_order_view">
         <Button
             android:layout_height="40dp"
