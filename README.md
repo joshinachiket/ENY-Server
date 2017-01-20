@@ -69,4 +69,5 @@ Nachiket: nachiket.r.joshi@gmail.com <br>
 
 ![Nachiket Joshi](https://avatars.githubusercontent.com/joshinachiket?s=100) |  ![Abhishek Madan](https://avatars.githubusercontent.com/AbhishekMadan?s=100) | ![Akshay Mishra](https://avatars.githubusercontent.com/mishraak?s=100)
 :--------------------------------------------------------------------------:|:-----------------------------------------------------------------------------:|:--------------------------------------------------------------------------:|:---------------------------------------------------------------------:
-[Nachiket Joshi](https://github.com/TheBloodMage) | [Abhishek Madan](https://github.com/AbhishekMadan) | [Akshay Mishra](https://github.com/mishraak)|
+
+[Nachiket Joshi](https://github.com/TheBloodMage) | [Abhishek Madan](https://github.com/AbhishekMadan) | [Akshay Mishra](https://github.com/mishraak)

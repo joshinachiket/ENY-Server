@@ -51,7 +51,8 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="460dp"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/button_container"
         android:id="@+id/container_detail_view">
         <ListView
             android:layout_width="match_parent"
@@ -62,15 +63,19 @@
             android:id="@+id/container_info">
         </ListView>
     </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/button_container">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:orientation="horizontal"
         android:paddingLeft="50dp"
         android:paddingRight="50dp"
         android:weightSum="10"
         android:background="#E6E6E6"
-        android:layout_below="@id/container_detail_view"
         android:id="@+id/order_and_refresh_button_view">
         <Button
             android:layout_height="40dp"
@@ -78,6 +83,7 @@
             android:layout_weight="5"
             android:text="@string/refresh_btn"
             android:layout_gravity="center_vertical"
+            android:layout_alignParentBottom="true"
             android:background="@drawable/round_button"
             android:layout_marginRight="20dp"
             android:id="@+id/bt_refresh" />
@@ -93,11 +99,11 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:orientation="horizontal"
         android:gravity="center"
         android:background="#E6E6E6"
-        android:layout_below="@id/container_detail_view"
+        android:layout_alignParentBottom="true"
         android:id="@+id/container_register_view">
         <Button
             android:layout_height="40dp"
@@ -108,4 +114,5 @@
             android:layout_marginRight="20dp"
             android:id="@+id/bt_register_device" />
     </LinearLayout>
+    </RelativeLayout>
 </RelativeLayout>
