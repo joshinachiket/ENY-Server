@@ -47,7 +47,11 @@ public class RegistrationActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        initialize();
+        if((new SmartSharedPreference()).getUID(this)!=null) {
+            startStatusActivity();
+        } else {
+            initialize();
+        }
     }
 
     private void initialize() {
@@ -110,15 +114,12 @@ public class RegistrationActivity extends AppCompatActivity {
         String url = getResources().getString(R.string.device_registration_url).toString();
         try {
             JSONObject input = new JSONObject();
-            String firebaseToken = FirebaseInstanceId.getInstance().getToken();
-            Log.d(TAG, firebaseToken);
             input.put("Content-Type", "application/json; charset=utf-8");
             input.put("name",name.getText().toString());
             input.put("address",address.getText().toString());
             storeCustomerDetails(name.getText().toString(),address.getText().toString());
             input.put("username", userName.getText().toString());
             input.put("password", passWord.getText().toString());
-            input.put("device_token",firebaseToken);
             input.put("eny_token",enyToken.getText().toString());
 
             JsonObjectRequest req = createRegistrationRequestObject(url,input);
@@ -133,9 +134,12 @@ public class RegistrationActivity extends AppCompatActivity {
         String url = getResources().getString(R.string.device_login_url).toString();
         try {
             JSONObject input = new JSONObject();
-            input.put("Content-Type", "application/json; charset=utf-8");
+            input.put("Content-Type", "application/json");
+            String firebaseToken = FirebaseInstanceId.getInstance().getToken();
+            Log.d(TAG, firebaseToken);
             input.put("username", userName.getText().toString());
             input.put("password", passWord.getText().toString());
+            input.put("device_token",firebaseToken);
 
             JsonObjectRequest req = loginRequest(url,input);
             new HttpRequest(this).addToRequestQueue(req);
@@ -151,16 +155,21 @@ public class RegistrationActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            storeUID(response.getString("uid"));
-                            //storeCustomerDetails(response.getString("name"),response.getString("address"));
-                            progress.setVisibility(View.INVISIBLE);
-                            login_container.setVisibility(View.VISIBLE);
-                            login.setVisibility(View.VISIBLE);
-                            register.setVisibility(View.INVISIBLE);
-                            customerDetail.setVisibility(View.GONE);
-                            login_register_tag.setTag("login");
-                            login_register_tag.setText("Register as a new Customer.");
-                            Toast.makeText(getApplicationContext(),"Registration Successful!",Toast.LENGTH_SHORT).show();
+                            if(response.getInt("statusCode") == getResources().getInteger(R.integer.registration_successful)) {
+                                progress.setVisibility(View.INVISIBLE);
+                                login_container.setVisibility(View.VISIBLE);
+                                login.setVisibility(View.VISIBLE);
+                                register.setVisibility(View.INVISIBLE);
+                                customerDetail.setVisibility(View.GONE);
+                                login_register_tag.setTag("login");
+                                login_register_tag.setText("Register as a new Customer.");
+                                Toast.makeText(getApplicationContext(), "Registration Successful!", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Log.d(TAG, "Error: Status code unsuccessful");
+                                progress.setVisibility(View.INVISIBLE);
+                                login_container.setVisibility(View.VISIBLE);
+                                Toast.makeText(getApplicationContext(),"Registration Failed!",Toast.LENGTH_SHORT).show();
+                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                             progress.setVisibility(View.INVISIBLE);
@@ -189,9 +198,11 @@ public class RegistrationActivity extends AppCompatActivity {
                         try {
                             if(response.getInt("statusCode") == getResources().getInteger(R.integer.login_successful)) {
                                 storeUID(response.getString("uid"));
+                                storeUsername();
                                 storeCustomerDetails(response.getString("name"),response.getString("address"));
                                 startStatusActivity();
                             } else {
+                                Log.d(TAG, "Error: Status code unsuccessful");
                                 Toast.makeText(getApplicationContext(),"Login Failed!",Toast.LENGTH_SHORT).show();
                                 progress.setVisibility(View.INVISIBLE);
                                 login_container.setVisibility(View.VISIBLE);
@@ -200,7 +211,7 @@ public class RegistrationActivity extends AppCompatActivity {
                             e.printStackTrace();
                             progress.setVisibility(View.INVISIBLE);
                             login_container.setVisibility(View.VISIBLE);
-                            Toast.makeText(getApplicationContext(),"Server Error!",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),"Response Error!",Toast.LENGTH_SHORT).show();
                         }
                     }
                 }, new Response.ErrorListener() {
@@ -210,7 +221,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 Log.d(TAG, "Error: " + error.getMessage());
                 progress.setVisibility(View.INVISIBLE);
                 login_container.setVisibility(View.VISIBLE);
-                Toast.makeText(getApplicationContext(),"Login Failed!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Server Error!!",Toast.LENGTH_SHORT).show();
             }
         });
         return request;
@@ -219,6 +230,11 @@ public class RegistrationActivity extends AppCompatActivity {
     public void storeUID(String uid) {
         SmartSharedPreference pref = new SmartSharedPreference();
         pref.saveUID(this,uid);
+    }
+
+    public void storeUsername() {
+        SmartSharedPreference pref = new SmartSharedPreference();
+        pref.saveUname(this,userName.getText().toString());
     }
 
     public void storeCustomerDetails(String name, String address) {

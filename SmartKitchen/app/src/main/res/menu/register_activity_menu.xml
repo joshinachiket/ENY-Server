@@ -8,6 +8,11 @@
         app:showAsAction="always">
     </item>
     <item
+        android:id="@+id/menu_deregisterUser"
+        android:orderInCategory="4"
+        app:showAsAction="never"
+        android:title="@string/deregister_user"/>
+    <item
         android:id="@+id/menu_register"
         android:orderInCategory="2"
         app:showAsAction="never"
