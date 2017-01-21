@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <link rel='stylesheet' href='/stylesheets/style.css' />
 
 <!-- Include jQuery Scripts -->
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-
 
 <!-- Include Bootstrap Files-->
 <link rel="stylesheet"
@@ -16,40 +16,51 @@
 <script
 	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
 </script>
-	
-	
-<meta http-equiv="Cache-Control"
-	content="no-cache, no-store, must-revalidate" />
-<meta http-equiv="Pragma" content="no-cache" />
-<meta http-equiv="Expires" content="0" />
 
-<title>Welcome</title>
+<!-- Include Angular.JS min JavaScrip file-->
+<script
+	src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js">
+</script>
+
+<!-- Loading the AngularJS file from /public/angularJS folder -->
+<script src="angularjs/simulator.js"></script>
+<title>Homepage</title>
+<script type="text/javascript">
+	
+</script>
 </head>
-<body ng-app="updateqty" ng-controller="container">
-	<h4>Simulate reading input from sesnor using below form</h4>
-	<div class="row">
-		<div class="col-md-4">
-			<div class="row">
-			<form action="updateqty" method="post">
-				<div class="col-md-12" style="margin: 10px;">
-					Tag ID <br> <input type="text" name="tagId" ng-model="tagId">
+	<body ng-controller="container">
+	<h1>Welcome <%= username %></h1>
+		<h4>Simulate reading input from sesnor using below form</h4>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="row">
+				<form action="updateqty" method="post">
+					<div class="col-md-12" style="margin: 10px;">
+						Tag ID <br> <input type="text" name="tagId" ng-model="tagId">
+					</div>
+					<div class="col-md-12" style="margin: 10px;">
+						Simulated reading from sesnor <br> <input type="text" name="cur_qty" ng-model="cur_qty">
+					</div>
+					<div class="col-md-12" style="margin: 10px;">
+						<input type="submit" class="btn btn-success" ng-click="submit();" value="Submit" />
+					</div>
+				</form>	
 				</div>
-				<div class="col-md-12" style="margin: 10px;">
-					Simulated reading from sesnor <br> <input type="text" name="cur_qty" ng-model="cur_qty">
-				</div>
-				<div class="col-md-12" style="margin: 10px;">
-					<input type="submit" class="btn btn-success" ng-click="submit();" value="Submit" />
-				</div>
-			</form>	
 			</div>
 		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-4">
-			<form action="logout" method="post">
-				<input type="submit" value="Logout" class="btn btn-success logout-btn"/>
-			</form>
+		<div class="row">
+			<div class="col-md-4">
+				<form action="logout" method="post">
+					<input type="submit" value="Logout" class="btn btn-success logout-btn"/>
+				</form>
+			</div>
 		</div>
-	</div>
-</body>
+
+		<!--
+		<div ng-app="simulator" ng-controller="simulator"  > 
+			<h1>{{info}}</h1>
+		</div>
+		-->
+	</body>
 </html>

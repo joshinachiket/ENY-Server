@@ -60,7 +60,7 @@ app.get('/containerstatus/:uid', container.containerstatus);
 //app.get('/buttonclicked', eny.buttonclicked);
 
 //POST REQUESTS
-app.post('/checklogin', login.checkLogin);
+app.post('/checklogin', login.checklogin);
 app.post('/mobilelogin', login.mobilelogin);
 app.post('/register', login.register);
 

@@ -10,34 +10,27 @@ exports.updateqty = function(req, res) {
 	var tagId = req.param("tagId");
 	var cur_qty = req.param("cur_qty");
 	
-	console.log(username);
 	var json_responses;
 
 	mongo.connect(mongoURL, function() {
-		console.log('CONNECTED TO MONGO AT: ' + mongoURL);
 		var collection_login = mongo.collection('login');
 		var collection_containers = mongo.collection('containers');
 		var uid; 
 		collection_login.findOne({ username : username }, 
 								function(err, response) {
-									//console.log(response);
 									uid = response.uid;
-									console.log(response.uid);
 									collection_containers.updateMany(
 								    		{uid : uid, tagId : tagId} ,
 								   			{$set: { cur_qty: cur_qty }}
 										, function(err, items) {	
 											if (items) {
-												console.log(items.modifiedCount);
-												console.log("TRUE");
 												json_responses = {
 													"modifiedCount" : items.modifiedCount,
 													"statusCode" : 1000
 												};
 												//res.send(json_responses);
-												res.redirect('/4homepage');
+												res.redirect('/homepage');
 											} else {
-												console.log("FALSE");
 												json_responses = {
 													"statusCode" : 999
 												};
@@ -52,30 +45,23 @@ exports.updateqty = function(req, res) {
 }
 
 
-
-
-
-
 exports.containerstatus = function(req, res) {
 
 	var uid = req.param("uid");
-	console.log(uid);
-
 	var json_responses;
 
 	mongo.connect(mongoURL, function() {
 	
-	console.log('CONNECTED TO MONGO AT: ' + mongoURL);
 	var collection_containers = mongo.collection('containers');	
 	collection_containers.find({uid : uid}, function(err, cursor){
 	    	cursor.toArray(function(err, items) {
-	                console.log(items.length);
 	                var json = {
 	                				count : items.length,
 	                				containers : items,
 	                				statusCode : 1000
 
 	                			}
+	                 res.setHeader('Access-Control-Allow-Origin', '*');			
 	                 res.send(json); 
 	         });
 		});
@@ -91,12 +77,11 @@ exports.registercontainer = function(req, res) {
 	var content_desc = req.param("content_desc");
 	var max_qty = req.param("max_qty");
 
-	console.log(req.params);
+	console.log(req.param);
 
 	var json_responses;
 
 	mongo.connect(mongoURL, function() {
-		console.log('CONNECTED TO MONGO AT: ' + mongoURL);
 		var collection_containers = mongo.collection('containers');
 
 		collection_containers.insert({
@@ -107,14 +92,12 @@ exports.registercontainer = function(req, res) {
 			cur_qty			: max_qty
 		}, function(err, container) {
 			if (container) {
-				console.log(container);
 				json_responses = {
 					"statusCode" : 1000
 				};
 				res.send(json_responses);
 
 			} else {
-				console.log("FALSE");
 				json_responses = {
 					"statusCode" : 999
 				};
@@ -143,17 +126,12 @@ exports.deregistercontainer = function(req, res) {
     	tags.push(tag.tagId);
 	});
 
-	//console.log(req.params);
-	console.log(uid);
-	console.log(tags);
-		console.log('CONNECTED TO MONGO AT: ' + mongoURL);
 		var collection_containers = mongo.collection('containers');
 		mongo.connect(mongoURL, function() {	
 		//collection_containers.deleteMany( {uid:uid}, {tagId:{ $in: tags } },	
 		collection_containers.remove({tagId:{$in:tags} ,uid : uid},	
 												function(err, response) {
 											   		if (response) {
-											   			console.log("DELETED COUNT : " + response.deletedCount);
 											   			json_responses = {
 											   				"deletedCount"  : response.deletedCount,
 															"statusCode" 	: 1000
@@ -184,7 +162,7 @@ exports.deregistercontainer = function(req, res) {
 	var uid = req.param("uid");
 	var tagId = req.param("tagId");
 
-	console.log(req.params);
+	console.log(req.param);
 
 	var json_responses;
 	console.log('CONNECTED TO MONGO AT: ' + mongoURL);
