@@ -25,12 +25,29 @@
 
 <title>Welcome</title>
 </head>
-<body>
+<body ng-app="updateqty" ng-controller="container">
+	<h4>Simulate reading input from sesnor using below form</h4>
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-md-4">
+			<div class="row">
+			<form action="updateqty" method="post">
+				<div class="col-md-12" style="margin: 10px;">
+					Tag ID <br> <input type="text" name="tagId" ng-model="tagId">
+				</div>
+				<div class="col-md-12" style="margin: 10px;">
+					Simulated reading from sesnor <br> <input type="text" name="cur_qty" ng-model="cur_qty">
+				</div>
+				<div class="col-md-12" style="margin: 10px;">
+					<input type="submit" class="btn btn-success" ng-click="submit();" value="Submit" />
+				</div>
+			</form>	
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
 			<form action="logout" method="post">
-				<h4>Welcome to the ENY-Personalized Server, <%= username %></h4>
-				<input type="submit" value="Logout"  class="btn btn-success"/>
+				<input type="submit" value="Logout" class="btn btn-success logout-btn"/>
 			</form>
 		</div>
 	</div>

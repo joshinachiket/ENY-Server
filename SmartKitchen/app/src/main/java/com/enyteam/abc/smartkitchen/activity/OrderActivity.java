@@ -1,5 +1,6 @@
 package com.enyteam.abc.smartkitchen.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ public class OrderActivity extends AppCompatActivity {
     private ArrayList<OrderPojo> orderData;
     private ListView orderList;
     private Button nextButton;
+    public static OrderActivity orderActivityInstance;
 
 
     @Override
@@ -36,13 +38,14 @@ public class OrderActivity extends AppCompatActivity {
         orderData = new ArrayList<OrderPojo>();
         for(JarPojo obj: (ArrayList<JarPojo>) getIntent().getSerializableExtra("Content")){
             if(obj.toOrder) {
-                orderData.add(new OrderPojo(obj.content,obj.maxJarQty));
+                orderData.add(new OrderPojo(obj.content,obj.maxJarQty-obj.currentQty));
             }
         }
         init();
     }
 
     private void init() {
+        orderActivityInstance = this;
         orderList = (ListView) findViewById(R.id.order_info);
         nextButton = (Button) findViewById(R.id.bt_next);
         orderList.setAdapter(new OrderListAdapter(orderData,this));

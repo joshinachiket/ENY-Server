@@ -3,9 +3,9 @@ ENY-Hackathon
 <p align="center"><img src="https://github.com/joshinachiket/Smart-Kitchen/blob/master/Documents/SK-Logo.jpeg" width="40%" /></p>
 
 ##INTRODUCTION
-Hackathon Event That Could Foud AT : https://eny.devpost.com/
+Event: https://eny.devpost.com/
 
-Building an IoT- based android app which will help you to make your kitchen smarter by using ENY button and Newura SDK.<br>
+Building an IoT- based android app which will help you to make your kitchen smarter by using ENY button and Neura SDK.<br>
 • We propose to use IoT proximity/weight sensors to map the day to day use of the container’s content in
 kitchen bottles supplies. (For demo we will simulate sensorical input on the html froent end managed in server.) <br>
 • This will be done by accessing the input obtained from the sensors and managing in the
@@ -32,6 +32,7 @@ With users' consent, Neura will share contextual insights about users with third
 ## Project Deliverables
 
 [Idea Sheet] (Documents/eny_idea.pdf)
+[Presentation] (Documents/Team Presentation.ppt)
 
 ##ARCHITECTURAL FLOW DIAGRAM
 <p align="center"><img src="https://github.com/joshinachiket/Smart-Kitchen/blob/master/Documents/ENY%20Architecture.jpeg" width="40%" /></p>
@@ -69,4 +70,5 @@ Nachiket: nachiket.r.joshi@gmail.com <br>
 
 ![Nachiket Joshi](https://avatars.githubusercontent.com/joshinachiket?s=100) |  ![Abhishek Madan](https://avatars.githubusercontent.com/AbhishekMadan?s=100) | ![Akshay Mishra](https://avatars.githubusercontent.com/mishraak?s=100)
 :--------------------------------------------------------------------------:|:-----------------------------------------------------------------------------:|:--------------------------------------------------------------------------:|:---------------------------------------------------------------------:
+
 [Nachiket Joshi](https://github.com/TheBloodMage) | [Abhishek Madan](https://github.com/AbhishekMadan) | [Akshay Mishra](https://github.com/mishraak)

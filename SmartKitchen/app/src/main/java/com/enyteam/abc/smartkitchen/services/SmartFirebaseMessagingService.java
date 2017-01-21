@@ -6,14 +6,18 @@ import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v7.app.NotificationCompat;
 import android.telephony.SmsManager;
 import android.util.Log;
+import android.widget.Toast;
 
 
 import com.enyteam.abc.smartkitchen.R;
 import com.enyteam.abc.smartkitchen.Storage.JarPojo;
 import com.enyteam.abc.smartkitchen.Storage.SmartSharedPreference;
+import com.enyteam.abc.smartkitchen.activity.ContainerStatusActivity;
 import com.enyteam.abc.smartkitchen.activity.RegistrationActivity;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
@@ -36,17 +40,17 @@ public class SmartFirebaseMessagingService extends FirebaseMessagingService {
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
+        sendButtonPressedMessage(remoteMessage);
         if(!isApplicationRunning()) {
             if((new SmartSharedPreference()).getUID(getApplicationContext())!=null){
                 Log.d("FIREBASE",(new SmartSharedPreference()).getPreferedStoreKey(getApplicationContext())+"");
                 if((new SmartSharedPreference()).getPreferedStoreKey(getApplicationContext())!=0) {
                     //if a store is marked as a favorite  store
                     try {
-                        sendTextMessage(remoteMessage);
+                        placeOrder(remoteMessage);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                    //buildAndShowNotification(remoteMessage);
                 } else {
                     buildAndShowNotification(remoteMessage);
                 }
@@ -81,24 +85,36 @@ public class SmartFirebaseMessagingService extends FirebaseMessagingService {
         notificationManager.notify(R.integer.app_notification_id, notificationBuilder.build());
     }
 
-    public void sendTextMessage(RemoteMessage message) throws JSONException {
-        String phoneNo =  (new SmartSharedPreference()).getPreferedStorePhone(getApplicationContext())+"";
+    public void sendButtonPressedMessage(RemoteMessage remote) {
         SmsManager manager = SmsManager.getDefault();
+        String phoneNo = remote.getData().get("button_user");
+        String message = "Concerned Person Notified!";
+        sendTextMessage(message,phoneNo);
+        Log.d(TAG,"Message Sent to :"+phoneNo+"\n"+message);
+    }
+
+    public void placeOrder(RemoteMessage message) throws JSONException {
+        String phoneNo =  (new SmartSharedPreference()).getPreferedStorePhone(getApplicationContext())+"";
         StringBuilder order = new StringBuilder();
         order.append("My Order \n");
         JSONObject info = new JSONObject(message.getData().get("info"));
         ArrayList<JarPojo> list = populateListView(info);
         for(int i=0 ; i<list.size(); i++) {
             if(list.get(i).currentQty < (list.get(i).maxJarQty/getResources().getInteger(R.integer.container_threshold_divider))) {
-                order.append(list.get(i).content+"     :     "+(list.get(i).maxJarQty/2)+"\n");
+                order.append(i+". "+list.get(i).content+"     :     "+(list.get(i).maxJarQty-list.get(i).currentQty)+" lb\n");
             }
         }
         if(list.size()>0) {
             order.append("\n--"+(new SmartSharedPreference()).getDeliveryName(getApplicationContext()) + "\n");
             order.append((new SmartSharedPreference()).getDeliveryAddress(getApplicationContext()) + "\n");
-            manager.sendTextMessage(phoneNo, null, order.toString(), null, null);
             showNotificationForCommoditiesOrdered(list);
+            sendTextMessage(order.toString(),phoneNo);
         }
+    }
+
+    public void sendTextMessage(String message, String to){
+        SmsManager manager = SmsManager.getDefault();
+        manager.sendTextMessage(to, null, message.toString(), null, null);
     }
 
     public void showNotificationForCommoditiesOrdered(ArrayList<JarPojo> list) {
@@ -114,11 +130,10 @@ public class SmartFirebaseMessagingService extends FirebaseMessagingService {
             inboxStyle.setSummaryText("+"+(list.size()-4)+" more");
         NotificationCompat.Builder mBuilder =
                 (NotificationCompat.Builder) new NotificationCompat.Builder(this)
-                        .setSmallIcon(R.drawable.smart_logo_)
+                        .setSmallIcon(R.drawable.smart_logo_noti)
                         .setContentTitle("ENY's Smart Kitchen")
                         .setContentText("Someone Ordered Grocery!.")
                         .setStyle(inboxStyle);
-                        //.addAction(R.drawable.ic_input_black_18dp, "show activity", piResult);
 
         NotificationManager notificationManager =(NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(0, mBuilder.build());
