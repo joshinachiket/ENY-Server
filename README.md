@@ -3,10 +3,10 @@ ENY-Hackathon
 <p align="center"><img src="https://github.com/joshinachiket/Smart-Kitchen/blob/master/Documents/SK-Logo.jpeg" width="40%" /></p>
 
 ##INTRODUCTION
-Hackathon Event That Could Foud AT : https://eny.devpost.com/
+Hackathon Event hat Could Found At : https://eny.devpost.com/
 
-Building an IoT- based android app which will help you to make your kitchen smarter by using ENY button and Newura SDK.<br>
-• We propose to use IoT proximity/weight sensors to map the day to day use of the container’s content in
+Building an IoT- based android app which will help you to make your kitchen smarter by using ENY button and Neura SDK.<br>
+• We propose to use IoT weight sensors to map the day to day use of the container’s content in
 kitchen bottles supplies. (For demo we will simulate sensorical input on the html froent end managed in server.) <br>
 • This will be done by accessing the input obtained from the sensors and managing in the
 android dashboard.<br>
@@ -38,7 +38,7 @@ With users' consent, Neura will share contextual insights about users with third
 
 
 ##	Technology Stack
-Java, Python(To detect ENY button press and to carry the signal to node server), node.JS, JavaScript, Android Studio, Android SDK, Git, Angular.JS, HTML and CSS.
+Java, Python(To detect ENY button press and to carry the signal to node server), Node JS, JavaScript, Android Studio, Android SDK, Git, Angular.JS, HTML and CSS.
 
 ##USER STORIES
 As a successful working professional and as a housewife Sita alwaya finds it hard to keep track of all the Groceries she needs to buy everyday.
@@ -51,7 +51,7 @@ Android app provides a dashboard with favorite stores will automatically place o
 Use a single button to automate task of monitoring the kitchen supplies without having to manually intervene.
 
 ##FUTURE ENHANCEMENTS
-If any E-Retailer is willing to expose their APIs then we can easily integrate their store in our android app to automate the ordering from store.
+If any E-Retailer is willing to expose their APIs then we can easily integrate their store in our android app to automate the ordering of groceries from store.
 If multiple stores are willing to share their APIs we can develope a mechanism of favourite store.
 Registering multiple ENY devices to a single Android app.
 Using real sensors and simulating the real IoT sensorical data.
