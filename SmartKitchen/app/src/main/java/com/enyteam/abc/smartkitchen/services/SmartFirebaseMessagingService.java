@@ -6,14 +6,19 @@ import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v7.app.NotificationCompat;
 import android.telephony.SmsManager;
 import android.util.Log;
-import android.util.StringBuilderPrinter;
+import android.widget.Toast;
+
 
 import com.enyteam.abc.smartkitchen.R;
+import com.enyteam.abc.smartkitchen.Storage.JarPojo;
 import com.enyteam.abc.smartkitchen.Storage.SmartSharedPreference;
 import com.enyteam.abc.smartkitchen.activity.ContainerStatusActivity;
+import com.enyteam.abc.smartkitchen.activity.RegistrationActivity;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -21,6 +26,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,16 +40,20 @@ public class SmartFirebaseMessagingService extends FirebaseMessagingService {
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
+        sendButtonPressedMessage(remoteMessage);
         if(!isApplicationRunning()) {
-            if((new SmartSharedPreference()).getPreferedStoreKey(getApplicationContext())!=0) {
-                //if a store is marked as a favorite  store
-                try {
-                    sendTextMessage(remoteMessage);
-                } catch (JSONException e) {
-                    e.printStackTrace();
+            if((new SmartSharedPreference()).getUID(getApplicationContext())!=null){
+                Log.d("FIREBASE",(new SmartSharedPreference()).getPreferedStoreKey(getApplicationContext())+"");
+                if((new SmartSharedPreference()).getPreferedStoreKey(getApplicationContext())!=0) {
+                    //if a store is marked as a favorite  store
+                    try {
+                        placeOrder(remoteMessage);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    buildAndShowNotification(remoteMessage);
                 }
-            } else {
-                buildAndShowNotification(remoteMessage);
             }
         }
     }
@@ -57,15 +67,15 @@ public class SmartFirebaseMessagingService extends FirebaseMessagingService {
 
 
     public void buildAndShowNotification(RemoteMessage message) {
-        Intent intent = new Intent(this, ContainerStatusActivity.class);
+        Intent intent = new Intent(this, RegistrationActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, R.integer.app_notification_id,
                 intent, PendingIntent.FLAG_ONE_SHOT);
 
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this);
         notificationBuilder.setSmallIcon(R.drawable.smart_logo_)
-                .setContentTitle(message.getNotification().getTitle())
-                .setContentText(message.getNotification().getBody())
+                .setContentTitle(message.getData().get("title"))
+                .setContentText(message.getData().get("body"))
                 .setAutoCancel(true)
                 .setContentIntent(pendingIntent);
 
@@ -75,25 +85,72 @@ public class SmartFirebaseMessagingService extends FirebaseMessagingService {
         notificationManager.notify(R.integer.app_notification_id, notificationBuilder.build());
     }
 
-    /*
-        {order:[
-              {"content":"Sugar","quantity":"2.5"},
-              {"content":"Tea","quantity":"3"},
-              ]
-        }
-     */
-    public void sendTextMessage(RemoteMessage message) throws JSONException {
-        String phoneNo =  (new SmartSharedPreference()).getPreferedStorePhone(getApplicationContext())+"";
+    public void sendButtonPressedMessage(RemoteMessage remote) {
         SmsManager manager = SmsManager.getDefault();
+        String phoneNo = remote.getData().get("button_user");
+        String message = "Concerned Person Notified!";
+        sendTextMessage(message,phoneNo);
+        Log.d(TAG,"Message Sent to :"+phoneNo+"\n"+message);
+    }
+
+    public void placeOrder(RemoteMessage message) throws JSONException {
+        String phoneNo =  (new SmartSharedPreference()).getPreferedStorePhone(getApplicationContext())+"";
         StringBuilder order = new StringBuilder();
-        JSONObject obj = new JSONObject(message.getData());
-        JSONArray arr = obj.getJSONArray("order");
-        for(int i=0; i< arr.length(); i++ ) {
-            JSONObject objectInArray = arr.getJSONObject(i);
-            order.append(objectInArray.get("content")+"  -   "+objectInArray.get("quantity")+"\n");
+        order.append("My Order \n");
+        JSONObject info = new JSONObject(message.getData().get("info"));
+        ArrayList<JarPojo> list = populateListView(info);
+        for(int i=0 ; i<list.size(); i++) {
+            if(list.get(i).currentQty < (list.get(i).maxJarQty/getResources().getInteger(R.integer.container_threshold_divider))) {
+                order.append(i+". "+list.get(i).content+"     :     "+(list.get(i).maxJarQty-list.get(i).currentQty)+" lb\n");
+            }
         }
+        if(list.size()>0) {
+            order.append("\n--"+(new SmartSharedPreference()).getDeliveryName(getApplicationContext()) + "\n");
+            order.append((new SmartSharedPreference()).getDeliveryAddress(getApplicationContext()) + "\n");
+            showNotificationForCommoditiesOrdered(list);
+            sendTextMessage(order.toString(),phoneNo);
+        }
+    }
 
-        /*manager.sendTextMessage(phoneNo,null,order,null,null);*/
+    public void sendTextMessage(String message, String to){
+        SmsManager manager = SmsManager.getDefault();
+        manager.sendTextMessage(to, null, message.toString(), null, null);
+    }
 
+    public void showNotificationForCommoditiesOrdered(ArrayList<JarPojo> list) {
+        NotificationCompat.InboxStyle inboxStyle =
+                new NotificationCompat.InboxStyle();
+
+        inboxStyle.setBigContentTitle("Commodities Order!");
+        for(int i=0 ; i<list.size() && i<5; i++) {
+            if(list.get(i).currentQty < (list.get(i).maxJarQty/getResources().getInteger(R.integer.container_threshold_divider)))
+                inboxStyle.addLine(list.get(i).content+"   :    "+list.get(i).currentQty*2);
+        }
+        if(list.size()>4)
+            inboxStyle.setSummaryText("+"+(list.size()-4)+" more");
+        NotificationCompat.Builder mBuilder =
+                (NotificationCompat.Builder) new NotificationCompat.Builder(this)
+                        .setSmallIcon(R.drawable.smart_logo_noti)
+                        .setContentTitle("ENY's Smart Kitchen")
+                        .setContentText("Someone Ordered Grocery!.")
+                        .setStyle(inboxStyle);
+
+        NotificationManager notificationManager =(NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(0, mBuilder.build());
+    }
+
+    public ArrayList<JarPojo> populateListView(JSONObject input) throws JSONException {
+        ArrayList<JarPojo> listData = new ArrayList<JarPojo>();
+        JSONArray arr = input.getJSONArray("containers");
+        for( int i=0 ; i<arr.length();i++) {
+            JarPojo obj = new JarPojo();
+            obj.jarId = arr.getJSONObject(i).get("tagId").toString();
+            obj.content = arr.getJSONObject(i).get("content_desc").toString();
+            obj.currentQty = arr.getJSONObject(i).getDouble("cur_qty");
+            obj.maxJarQty = arr.getJSONObject(i).getDouble("max_qty");
+            obj.toOrder = false;
+            listData.add(obj);
+        }
+        return listData;
     }
 }

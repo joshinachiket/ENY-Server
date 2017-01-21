@@ -35,6 +35,8 @@ public class ContainerStatusActivity extends AppCompatActivity {
 
     private static final String TAG = "SMART KITCHEN";
     public static String UID;
+    private static boolean activityVisible;
+
     private HttpRequest requestQueue;
     private View noDeviceRegisteredView;
     private View progressView;
@@ -63,9 +65,24 @@ public class ContainerStatusActivity extends AppCompatActivity {
         requestContainerStatus();
     }
 
+    public static boolean isActivityVisible() {
+        return activityVisible;
+    }
+
+    private void setActivityVisible(boolean v){
+        activityVisible = v;
+    }
+
     @Override
     protected void onStart() {
         super.onStart();
+        setActivityVisible(true);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        setActivityVisible(false);
     }
 
     private void init() {
@@ -116,6 +133,8 @@ public class ContainerStatusActivity extends AppCompatActivity {
                     if(obj.toOrder){
                         orderSelectedStuffs();
                         break;
+                    } else {
+                        Toast.makeText(getApplicationContext(),"Select Commodity to order!",Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -148,11 +167,11 @@ public class ContainerStatusActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 return true;
-            case R.id.logout: {
-                Intent intent = new Intent(this,RegistrationActivity.class);
-                startActivity(intent);
-                finish();
-                }
+            case R.id.logout:
+                    logoutUser();
+                return true;
+            case R.id.menu_deregisterUser:
+                    deregisterUser();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -194,6 +213,85 @@ public class ContainerStatusActivity extends AppCompatActivity {
         registerContainerView.setVisibility(View.INVISIBLE);
         serverErrorView.setVisibility(View.INVISIBLE);
 
+    }
+
+    public void logoutUser() {
+        String url = getResources().getString(R.string.logout_user_url).toString();
+        Log.d(TAG,"ContainerStatusActivity - "+url);
+
+        JSONObject obj = new JSONObject();
+        try {
+            obj.put("Content-Type", "application/json; charset=utf-8");
+            obj.put("uid",(new SmartSharedPreference()).getUID(getApplicationContext()));
+            obj.put("username",(new SmartSharedPreference()).getUname(getApplicationContext()));
+            JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url,obj,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            try {
+                                if(response.getInt("statusCode") == getResources().getInteger(R.integer.registration_successful)) {
+                                    Intent intent = new Intent(getApplicationContext(), RegistrationActivity.class);
+                                    (new SmartSharedPreference()).clearSharedPreference(getApplicationContext());
+                                    startActivity(intent);
+                                    finish();
+                                }else{
+                                    Log.d(TAG, "Error: Status code unsuccessful" );
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                Toast.makeText(getApplicationContext(),"Logout Failed!",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.d(TAG, "Error: " + error.getMessage());
+                    Toast.makeText(getApplicationContext(),"Server Error!",Toast.LENGTH_SHORT).show();
+                }
+            });
+            requestQueue.addToRequestQueue(request);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void  deregisterUser(){
+        String url = getResources().getString(R.string.deregister_user_url).toString();
+        Log.d(TAG,"ContainerStatusActivity - "+url);
+
+        JSONObject obj = new JSONObject();
+        try {
+            obj.put("uid",(new SmartSharedPreference()).getUID(getApplicationContext()));
+            obj.put("username",(new SmartSharedPreference()).getUname(getApplicationContext()));
+            JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url,(String) null,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            try {
+                                if(response.getInt("statusCode") == getResources().getInteger(R.integer.registration_successful)) {
+                                    Intent intent = new Intent(getApplicationContext(), RegistrationActivity.class);
+                                    (new SmartSharedPreference()).clearUID(getApplicationContext());
+                                    startActivity(intent);
+                                    finish();
+                                } else{
+                                    Log.d(TAG, "Error: Status code unsuccessful" );
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                Toast.makeText(getApplicationContext(),"Deregistration Failed!",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.d(TAG, "Error: " + error.getMessage());
+                    Toast.makeText(getApplicationContext(),"Server Error!",Toast.LENGTH_SHORT).show();
+                }
+            });
+            requestQueue.addToRequestQueue(request);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     public void requestContainerStatus() {

@@ -2,16 +2,20 @@
     <!-- URL for making server requests-->
     <string name="base_url">https://sheltered-caverns-66027.herokuapp.com/</string>
     <string name="device_registration_url">http://10.0.0.2:3000/register</string>
-    <string name="device_login_url">http://10.0.0.2:3000/checklogin</string>
+    <string name="device_login_url">http://10.0.0.2:3000/mobilelogin</string>
     <string name="container_status_url">http://10.0.0.2:3000/containerstatus</string>
     <string name="token_update_url">http://10.0.0.2:3000/updateurl</string>
     <string name="register_container_url">http://10.0.0.2:3000/registercontainer</string>
     <string name="delete_container_url">http://10.0.0.2:3000/deregistercontainer</string>
+    <string name="logout_user_url">http://10.0.0.2:3000/mobilelogout</string>
+    <string name="deregister_user_url">http://10.0.0.2:3000/deregisteruser</string>
+
     <string name="clear_preference">Clear Store preference</string>
     <string name="prefered_name">Preferred Name</string>
     <string name="preferred_address">Delivery address</string>
     <string name="app_package">com.enyteam.abc.smartkitchen</string>
 
+    <string name="app_display_name">Smart Kitchen</string>
     <string name="app_name"> &#160;&#160;&#160;&#160;Smart Kitchen</string>
     <string name="cart">&#160;&#160;&#160;&#160;Cart</string>
     <string name="store">&#160;&#160;&#160;&#160;Choose a Store</string>
@@ -37,5 +41,6 @@
     <string name="message_send">Message Send</string>
     <string name="logout">Logout</string>
     <string name="eny_device_token">Eny Registration Key</string>
+    <string name="deregister_user">Deregister ENY</string>
 
 </resources>

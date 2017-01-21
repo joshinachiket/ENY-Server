@@ -77,6 +77,7 @@ public class ShopListingActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent,final View view, int position, long id) {
                 AlertDialog.Builder dialog = new AlertDialog.Builder(ShopListingActivity.this);
                 dialog.setTitle(R.string.confirm);
+                dialog.setIcon(R.drawable.smart_logo_noti);
                 dialog.setMessage("Confirm Order?");
                 dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
@@ -137,16 +138,21 @@ public class ShopListingActivity extends AppCompatActivity {
         String name;
         String address;
         String phoneNo = ((TextView)view.findViewById(R.id.tv_phone_num)).getText().toString();
-        String message = "";
+        StringBuilder message = new StringBuilder();
+        message.append("My Order \n");
         for(OrderPojo obj: (ArrayList<OrderPojo>) getIntent().getSerializableExtra("Content")){
-           message += "\n"+obj.itemName +"  -  "+obj.itemQty;
+           message.append("\n"+obj.itemName +"  -  "+obj.itemQty+" lb\n");
         }
-        if(message.length()>0){
+        if( ((ArrayList<OrderPojo>) getIntent().getSerializableExtra("Content")).size()>0){
             SmsManager manager = SmsManager.getDefault();
-            manager.sendTextMessage(phoneNo,null,message,null,null);
+            message.append("\n--"+(new SmartSharedPreference()).getDeliveryName(getApplicationContext()) + "\n");
+            message.append((new SmartSharedPreference()).getDeliveryAddress(getApplicationContext()) + "\n");
+            manager.sendTextMessage(phoneNo,null,message.toString(),null,null);
             Toast.makeText(getApplicationContext(),getResources().getString(R.string.message_send).toString()
                     ,Toast.LENGTH_SHORT).show();
             finish();
+            //finish the order Activity as well
+            OrderActivity.orderActivityInstance.finish();
         }
     }
 }

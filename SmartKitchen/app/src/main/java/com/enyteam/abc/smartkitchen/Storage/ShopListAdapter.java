@@ -27,7 +27,7 @@ public class ShopListAdapter extends BaseAdapter {
         this.context = context;
         pref = new SmartSharedPreference();
         list = new ArrayList<StorePojo>();
-        list.add(new StorePojo(1001,"WalMart","777 Story Rd, San Jose, CA",6692655211l));
+        list.add(new StorePojo(1001,"WalMart","777 Story Rd, San Jose, CA",6692655212l));
         list.add(new StorePojo(1002,"Safeway","100 S Second St, San Jose, CA 95113",6692655211l));
         list.add(new StorePojo(1003,"Costco","2201 Senter Rd, San Jose, CA",6692655211l));
         list.add(new StorePojo(1004,"Whole Foods"," 777 The Alameda, San Jose, CA 95126",6692655211l));
