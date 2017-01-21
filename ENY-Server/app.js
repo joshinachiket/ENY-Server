@@ -9,8 +9,8 @@ var user			= require('./routes/user');
 var http			= require('http');
 var path			= require('path');
 
-//var mongoSessionConnectURL = "mongodb://localhost:27017/EnyDatabaseMongoDB";
-var mongoSessionConnectURL = "mongodb://heroku_0z017gpr:dshkpnq53po2r0hgh4r3h8qjne@ds117909.mlab.com:17909/heroku_0z017gpr";
+var mongoSessionConnectURL = "mongodb://localhost:27017/EnyDatabaseMongoDB";
+//var mongoSessionConnectURL = "mongodb://heroku_x4rwn6l8:nc5ua8377vca7ihtdt1pni05c9@ds117909.mlab.com:17909/heroku_x4rwn6l8";
 var expressSession = require("express-session");
 var mongoStore = require("connect-mongo")(expressSession);
 var mongo = require("./routes/mongo");
@@ -57,10 +57,11 @@ app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/homepage',login.redirectToHomepage);
 app.get('/containerstatus/:uid', container.containerstatus);
-app.get('/buttonclicked', eny.buttonclicked);
+//app.get('/buttonclicked', eny.buttonclicked);
 
 //POST REQUESTS
 app.post('/checklogin', login.checkLogin);
+app.post('/mobilelogin', login.mobilelogin);
 app.post('/register', login.register);
 
 app.post('/registercontainer', container.registercontainer);
@@ -69,8 +70,11 @@ app.post('/deregistercontainer', container.deregistercontainer);
 app.post('/logout', login.logout);
 app.post('/updatetoken', user.updatetoken);
 //app.post('/containerstatus', container.containerstatus);
-
-
+app.post('/updateqty', container.updateqty);
+app.post('/buttonclicked', eny.buttonclicked);
+app.post('/logoutall', login.logoutall);
+app.post('/deregisteruser', user.deregisteruser);
+app.post('/mobilelogout', login.mobilelogout);
 
 
 //connect to the mongo collection session and then createServer
