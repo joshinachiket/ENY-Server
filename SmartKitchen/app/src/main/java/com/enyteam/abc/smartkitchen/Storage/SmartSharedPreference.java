@@ -7,6 +7,7 @@ public class SmartSharedPreference {
 
     public static final String PREFS_NAME = "com.enyteam.abc.smartkitchen";
     public static final String PREFS_KEY = "UID";
+    public static final String USER_NAME = "USERNAME";
     public static final String STORE_KEY = "STORE_ID";
     public static final String STORE_PHONE = "STORE_PHONE";
     public static final String STORE_CUST_NAME = "CUST_NAME";
@@ -35,13 +36,42 @@ public class SmartSharedPreference {
         return settings.getString(PREFS_KEY, null);
     }
 
-    public void clearSharedPreference(Context context) {
+    public void clearUID(Context context) {
         SharedPreferences settings;
         SharedPreferences.Editor editor;
 
+        settings = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE); //1
+        editor = settings.edit();
+        editor.remove(PREFS_KEY);
+        editor.remove(USER_NAME);
+        editor.remove(STORE_KEY);
+        editor.remove(STORE_PHONE);
+        editor.commit();
+    }
+
+
+    public void saveUname(Context context, String uname) {
+        SharedPreferences settings;
+        SharedPreferences.Editor editor;
+
+        settings = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE); //1
+        editor = settings.edit();
+        editor.putString(USER_NAME, uname);
+        editor.commit();
+    }
+
+    public String getUname(Context context) {
+        SharedPreferences settings;
+        settings = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        return settings.getString(USER_NAME, null);
+    }
+
+
+    public void clearSharedPreference(Context context) {
+        SharedPreferences settings;
+        SharedPreferences.Editor editor;
         settings = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         editor = settings.edit();
-
         editor.clear();
         editor.commit();
     }
@@ -98,5 +128,17 @@ public class SmartSharedPreference {
         editor.putString(STORE_CUST_NAME, name);
         editor.putString(STORE_CUST_ADDR, address);
         editor.commit();
+    }
+
+    public String getDeliveryName(Context context) {
+        SharedPreferences settings;
+        settings = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        return settings.getString(STORE_CUST_NAME,"");
+    }
+
+    public String getDeliveryAddress(Context context) {
+        SharedPreferences settings;
+        settings = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        return settings.getString(STORE_CUST_ADDR,"");
     }
 }
