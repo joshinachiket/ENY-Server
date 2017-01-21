@@ -35,6 +35,8 @@ public class ContainerStatusActivity extends AppCompatActivity {
 
     private static final String TAG = "SMART KITCHEN";
     public static String UID;
+    private static boolean activityVisible;
+
     private HttpRequest requestQueue;
     private View noDeviceRegisteredView;
     private View progressView;
@@ -63,9 +65,24 @@ public class ContainerStatusActivity extends AppCompatActivity {
         requestContainerStatus();
     }
 
+    public static boolean isActivityVisible() {
+        return activityVisible;
+    }
+
+    private void setActivityVisible(boolean v){
+        activityVisible = v;
+    }
+
     @Override
     protected void onStart() {
         super.onStart();
+        setActivityVisible(true);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        setActivityVisible(false);
     }
 
     private void init() {
@@ -116,6 +133,8 @@ public class ContainerStatusActivity extends AppCompatActivity {
                     if(obj.toOrder){
                         orderSelectedStuffs();
                         break;
+                    } else {
+                        Toast.makeText(getApplicationContext(),"Select Commodity to order!",Toast.LENGTH_SHORT).show();
                     }
                 }
             }
