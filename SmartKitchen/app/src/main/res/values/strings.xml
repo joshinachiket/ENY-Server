@@ -1,14 +1,14 @@
 <resources>
     <!-- URL for making server requests-->
     <string name="base_url">https://sheltered-caverns-66027.herokuapp.com/</string>
-    <string name="device_registration_url">http://10.0.0.2:3000/register</string>
-    <string name="device_login_url">http://10.0.0.2:3000/mobilelogin</string>
-    <string name="container_status_url">http://10.0.0.2:3000/containerstatus</string>
-    <string name="token_update_url">http://10.0.0.2:3000/updateurl</string>
-    <string name="register_container_url">http://10.0.0.2:3000/registercontainer</string>
-    <string name="delete_container_url">http://10.0.0.2:3000/deregistercontainer</string>
-    <string name="logout_user_url">http://10.0.0.2:3000/mobilelogout</string>
-    <string name="deregister_user_url">http://10.0.0.2:3000/deregisteruser</string>
+    <string name="device_registration_url">http://10.3.16.163:3000/register</string>
+    <string name="device_login_url">http://10.3.16.163:3000/mobilelogin</string>
+    <string name="container_status_url">http://10.3.16.163:3000/containerstatus</string>
+    <string name="token_update_url">http://10.3.16.163:3000/updateurl</string>
+    <string name="register_container_url">http://10.3.16.163:3000/registercontainer</string>
+    <string name="delete_container_url">http://10.3.16.163:3000/deregistercontainer</string>
+    <string name="logout_user_url">http://10.3.16.163:3000/mobilelogout</string>
+    <string name="deregister_user_url">http://10.3.16.163:3000/deregisteruser</string>
 
     <string name="clear_preference">Clear Store preference</string>
     <string name="prefered_name">Preferred Name</string>
@@ -28,6 +28,7 @@
     <string name="refresh_btn">Refresh</string>
     <string name="order_button">Order</string>
     <string name="register_button">Register</string>
+    <string name="deregister_button">Deregister</string>
     <string name="delete_button">Delete</string>
     <string name="register_container">Register Container</string>
     <string name="delete_container">Delete Container</string>
@@ -42,5 +43,14 @@
     <string name="logout">Logout</string>
     <string name="eny_device_token">Eny Registration Key</string>
     <string name="deregister_user">Deregister ENY</string>
+    <string name="neura_menu">Neura Support</string>
+    <string name="neura_connection_label">Neura Status:</string>
+    <string name="neura_connected">Neura Status:</string>
+    <string name="neura_disconnected">Neura Status:</string>
+
+    <!-- Neura Credentials-->
+    <string name="app_uid">9c6d06df7dc00f3bcec00b484e35906ed7254c487f0c5f3b3ee0f9652ca39d51</string>
+    <string name="app_secret">bb55c72aa6f4a73aaad7a7fd5886c8024062facfacfa6a450f015728c05055a1</string>
+    <string name="neura_activity">com.enyteam.abc.neura_demo</string>
 
 </resources>

@@ -172,9 +172,23 @@ public class ContainerStatusActivity extends AppCompatActivity {
                 return true;
             case R.id.menu_deregisterUser:
                     deregisterUser();
+                    deregisterNeura();
+                return true;
+            case R.id.menu_neura_activate:
+                    //changeNeuraConfiguration();
+                launchNeuraApplication();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void launchNeuraApplication() {
+        Intent launchIntent = getPackageManager().getLaunchIntentForPackage(getApplication().getResources().getString(R.string.neura_activity));
+        if (launchIntent != null) {
+            startActivity(launchIntent);//null pointer check in case package name was not found
+        } else {
+            Toast.makeText(ContainerStatusActivity.this,"Cannot find Neura!",Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -239,6 +253,7 @@ public class ContainerStatusActivity extends AppCompatActivity {
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
+                                setServerErrorView();
                                 Toast.makeText(getApplicationContext(),"Logout Failed!",Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -246,6 +261,7 @@ public class ContainerStatusActivity extends AppCompatActivity {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     Log.d(TAG, "Error: " + error.getMessage());
+
                     Toast.makeText(getApplicationContext(),"Server Error!",Toast.LENGTH_SHORT).show();
                 }
             });
@@ -263,7 +279,7 @@ public class ContainerStatusActivity extends AppCompatActivity {
         try {
             obj.put("uid",(new SmartSharedPreference()).getUID(getApplicationContext()));
             obj.put("username",(new SmartSharedPreference()).getUname(getApplicationContext()));
-            JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url,(String) null,
+            JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url,(JSONObject) null,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
@@ -300,7 +316,7 @@ public class ContainerStatusActivity extends AppCompatActivity {
                 "/"+(new SmartSharedPreference()).getUID(this);
         Log.d(TAG,"ContainerStatusActivity - "+url);
 
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url,(String) null,
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url,(JSONObject) null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -453,5 +469,17 @@ public class ContainerStatusActivity extends AppCompatActivity {
         Intent intent = new Intent(this,OrderActivity.class);
         intent.putExtra("Content",listData);
         startActivity(intent);
+    }
+
+    public void changeNeuraConfiguration() {
+        Intent intent = new Intent(this,NeuraSettingActivity.class);
+        startActivity(intent);
+    }
+
+    public void  deregisterNeura() {
+        Intent intent = new Intent();
+        intent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
+        intent.setAction("com.enyteam.DEREGISTER_ENY");
+        sendBroadcast(intent); 
     }
 }
