@@ -3,10 +3,12 @@ ENY-Hackathon
 <p align="center"><img src="https://github.com/joshinachiket/Smart-Kitchen/blob/master/Documents/SK-Logo.jpeg" width="40%" /></p>
 
 ##INTRODUCTION
-Hackathon Event hat Could Found At : https://eny.devpost.com/
+
+Event: https://eny.devpost.com/
 
 Building an IoT- based android app which will help you to make your kitchen smarter by using ENY button and Neura SDK.<br>
-• We propose to use IoT weight sensors to map the day to day use of the container’s content in
+• We propose to use IoT proximity/weight sensors to map the day to day use of the container’s content in
+
 kitchen bottles supplies. (For demo we will simulate sensorical input on the html froent end managed in server.) <br>
 • This will be done by accessing the input obtained from the sensors and managing in the
 android dashboard.<br>
@@ -31,16 +33,20 @@ With users' consent, Neura will share contextual insights about users with third
 
 ## Project Deliverables
 
-[Idea Sheet] (Documents/eny_idea.pdf)
+[Idea Sheet] (Documents/eny_idea.pdf)<br>
+[Presentation] (Documents/Team Presentation.ppt)<br>
 
 ##ARCHITECTURAL FLOW DIAGRAM
 <p align="center"><img src="https://github.com/joshinachiket/Smart-Kitchen/blob/master/Documents/ENY%20Architecture.jpeg" width="40%" /></p>
 
+##DISTINCTIVENESS VS EXISTING SOLUTION
+
+This is one of the innovative solution for existing probem in this field. If the solutions are present in the market we sure require a little research to refine and come up with a robost one.
 
 ##	Technology Stack
 Java, Python(To detect ENY button press and to carry the signal to node server), Node JS, JavaScript, Android Studio, Android SDK, Git, Angular.JS, HTML and CSS.
 
-##USER STORIES
+##USER STORIES/ EXPERIENCE
 As a successful working professional and as a housewife Sita alwaya finds it hard to keep track of all the Groceries she needs to buy everyday.
 This is where ENY button enabled with a simple Android app comes to her rescue.
 The kitchen is now smart as the containers all have a simple weight sensors attached to them. Sensorical data is all connected to a node server and the server keeps track of each sensors.

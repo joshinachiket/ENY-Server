@@ -22,4 +22,9 @@
         android:orderInCategory="3"
         app:showAsAction="never"
         android:title="@string/delete_container"/>
+    <item
+        android:id="@+id/menu_neura_activate"
+        android:orderInCategory="4"
+        app:showAsAction="never"
+        android:title="@string/neura_menu"/>
 </menu>

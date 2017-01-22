@@ -77,6 +77,7 @@ public class ShopListingActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent,final View view, int position, long id) {
                 AlertDialog.Builder dialog = new AlertDialog.Builder(ShopListingActivity.this);
                 dialog.setTitle(R.string.confirm);
+                dialog.setIcon(R.drawable.smart_logo_noti);
                 dialog.setMessage("Confirm Order?");
                 dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
@@ -101,6 +102,7 @@ public class ShopListingActivity extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> parent, final View view, int position, long id) {
                 AlertDialog.Builder dialog = new AlertDialog.Builder(ShopListingActivity.this);
                 dialog.setTitle(R.string.confirm_preferrence_dialog_heading);
+                dialog.setIcon(R.drawable.smart_logo_noti);
                 dialog.setMessage("Confirm set the store as a prefered Store?");
                 dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
@@ -140,7 +142,7 @@ public class ShopListingActivity extends AppCompatActivity {
         StringBuilder message = new StringBuilder();
         message.append("My Order \n");
         for(OrderPojo obj: (ArrayList<OrderPojo>) getIntent().getSerializableExtra("Content")){
-           message.append("\n"+obj.itemName +"  -  "+obj.itemQty+"\n");
+           message.append("\n"+obj.itemName +"  -  "+obj.itemQty+" lb\n");
         }
         if( ((ArrayList<OrderPojo>) getIntent().getSerializableExtra("Content")).size()>0){
             SmsManager manager = SmsManager.getDefault();
@@ -150,6 +152,8 @@ public class ShopListingActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),getResources().getString(R.string.message_send).toString()
                     ,Toast.LENGTH_SHORT).show();
             finish();
+            //finish the order Activity as well
+            OrderActivity.orderActivityInstance.finish();
         }
     }
 }

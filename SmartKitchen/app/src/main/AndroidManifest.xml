@@ -35,9 +35,13 @@
             android:name=".activity.OrderActivity"
             android:label="@string/cart"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.ShopListingActivity"
+        <activity
+            android:name=".activity.ShopListingActivity"
+            android:label="@string/store"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.NeuraSettingActivity"
             android:screenOrientation="portrait"
-            android:label="@string/store"/>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
         <service android:name=".services.SmartFirebaseMessagingService">
             <intent-filter>
@@ -49,8 +53,11 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-
-
+        <receiver android:name=".receivers.HandleNeuraStateAlertReceiver">
+            <intent-filter>
+                <action android:name="com.neura.android.ACTION_NEURA_STATE_ALERT" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
