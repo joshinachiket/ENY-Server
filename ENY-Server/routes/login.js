@@ -3,7 +3,7 @@
  */
 var mongo = require("./mongo");
 
-var mongoURL = "mongodb://localhost:27017/EnyDatabaseMongoDB";
+var mongoURL = "mongodb://10.3.16.163:27017/EnyDatabaseMongoDB";
 //var mongoSessionConnectURL = "mongodb://heroku_x4rwn6l8:nc5ua8377vca7ihtdt1pni05c9@ds117909.mlab.com:17909/heroku_x4rwn6l8";
 
 var ejs = require("ejs");
@@ -180,15 +180,15 @@ exports.mobilelogout = function(req, res) {
 			});
 	});
 
-	req.session.destroy();
-
+	//req.session.destroy();
+	/*
 	//Internally calls to logoutall API, don't implement such code in prod, use MQ
 	var postData = JSON.stringify({
 		  'username' : username
 	});
 
 	var options = {
-	  hostname: 'localhost',
+	  hostname: '10.3.16.163',
 	  port: 3000,
 	  path: '/logoutall',
 	  method: 'POST',
@@ -217,6 +217,7 @@ exports.mobilelogout = function(req, res) {
 
 	req.write(postData);	
 	req.end();
+	*/
 };
 
 

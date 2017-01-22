@@ -3,7 +3,6 @@
 <head>
 
 <link rel='stylesheet' href='/stylesheets/style.css' />
-<link rel='stylesheet' href='/stylesheets/table.css' />
 
 <!-- Include jQuery Scripts -->
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -24,14 +23,14 @@
 </script>
 
 <!-- Loading the AngularJS file from /public/angularJS folder -->
-<script src="angularjs/container.js"></script>
+<script src="angularjs/simulator.js"></script>
 <title>Homepage</title>
 <script type="text/javascript">
 	
 </script>
 </head>
-	<body ng-app="container" ng-controller="container">
-	<h1>Welcome </h1>
+	<body ng-controller="container">
+	<h1>Welcome <%= username %></h1>
 		<h4>Simulate reading input from sesnor using below form</h4>
 		<div class="row">
 			<div class="col-md-4">
@@ -45,24 +44,6 @@
 					</div>
 					<div class="col-md-12" style="margin: 10px;">
 						<input type="submit" class="btn btn-success" ng-click="submit();" value="Submit" />
-						<button ng-click="uicontainerstatus()" class="btn btn-success" >Fetch Records</button> <br><br>
-						<form action="updateqty" method="post">
-							<table class="table table-fill">
-									<tr>
-										<th>Tag ID</th>
-										<th>Content</th>
-										<th>Current Qty</th>
-										<th>Max Qty</th>
-									</tr>
-									<tr ng-repeat="item in items">
-										<td>{{item.tagId}}</td>
-										<td>{{item.content_desc}}</td>
-										<td>{{item.cur_qty}}</td>
-										<td>{{item.max_qty}}</td>
-
-									</tr>	
-							</table>
-						</form>	
 					</div>
 				</form>	
 				</div>
@@ -75,5 +56,11 @@
 				</form>
 			</div>
 		</div>
+
+		<!--
+		<div ng-app="simulator" ng-controller="simulator"  > 
+			<h1>{{info}}</h1>
+		</div>
+		-->
 	</body>
 </html>

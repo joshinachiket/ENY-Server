@@ -1,7 +1,7 @@
 
 var FCM = require('fcm-push');
 var mongo = require("./mongo");
-var mongoURL = "mongodb://localhost:27017/EnyDatabaseMongoDB";
+var mongoURL = "mongodb://10.3.16.163:27017/EnyDatabaseMongoDB";
 var http = require('http');
 
 /*
@@ -40,7 +40,7 @@ exports.buttonclicked = function(req, res) {
                 var fcm = new FCM(serverKey);
 				
 				var options = {
-				  host: 'localhost',
+				  host: '10.3.16.163',
 				  path: '/containerstatus/'+ uid ,
 				  port: '3000',
 				  method: 'GET'

@@ -127,7 +127,7 @@ def trigger_click_event() :
 
 def trigger_click_event(btn_id) :
     #POST TO NODE APP
-    uri = "http://localhost:3000/buttonclicked"
+    uri = "http://10.3.16.163:3000/buttonclicked"
     params = {
         'eny_token': btn_id,
         'button_user' : '6692655169'

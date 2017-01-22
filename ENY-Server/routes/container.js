@@ -1,5 +1,5 @@
 var mongo = require("./mongo");
-var mongoURL = "mongodb://localhost:27017/EnyDatabaseMongoDB";
+var mongoURL = "mongodb://10.3.16.163:27017/EnyDatabaseMongoDB";
 //var mongoSessionConnectURL = "mongodb://heroku_x4rwn6l8:nc5ua8377vca7ihtdt1pni05c9@ds117909.mlab.com:17909/heroku_x4rwn6l8";
 var ejs = require("ejs");
 
@@ -65,9 +65,45 @@ exports.containerstatus = function(req, res) {
 	                 res.send(json); 
 	         });
 		});
-
 	});
 }
+
+exports.uicontainerstatus = function(req, res) {
+
+	console.log("API called uicontainerstatus.......");
+	var username = req.session.username;
+	console.log("user " + username);
+	var uid;
+	//var ctrs;
+	mongo.connect(mongoURL, function() {
+
+		var collection_login = mongo.collection('login');
+		var collection_containers = mongo.collection('containers');
+
+		collection_login.findOne({
+			username : req.session.username
+		}, function(err,user){
+				if (req.session.username) {	
+					uid = user.uid;
+					console.log(uid);	
+					collection_containers.find({uid : uid}, function(err, cursor){
+			    		cursor.toArray(function(err, items) {
+			    			if (items.length>0) {
+			    			    console.log(items);	
+			                 	res.setHeader('Access-Control-Allow-Origin', '*');	
+			                 	//res.render("homepage", {items : items});
+			                 	res.send(items);		
+			    			}
+			         	});
+					});				
+				} else {
+					res.setHeader('Access-Control-Allow-Origin', '*');	
+					res.redirect('/');
+				}
+		});
+	})
+}
+
 
 exports.registercontainer = function(req, res) {
 	// These two variables come from the form on
