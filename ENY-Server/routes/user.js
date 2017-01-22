@@ -2,7 +2,7 @@
  * New node file
  */
 var mongo = require("./mongo");
-var mongoURL = "mongodb://localhost:27017/EnyDatabaseMongoDB";
+var mongoURL = "mongodb://10.3.16.163:27017/EnyDatabaseMongoDB";
 //var mongoSessionConnectURL = "mongodb://heroku_x4rwn6l8:nc5ua8377vca7ihtdt1pni05c9@ds117909.mlab.com:17909/heroku_x4rwn6l8";
 var ejs = require("ejs");
 var http = require('http');
@@ -11,30 +11,28 @@ exports.deregisteruser = function(req, res) {
 	var uid = req.param("uid");
 	var username = req.param("username");
 
-	//console.log("PARAM " + req.param);
-
 	var flag=true;
 	var json_responses;
+
+	console.log('API Called deregisteruser...');
+	console.log(req.param);
+
 	mongo.connect(mongoURL, function() {
 		var collection_login = mongo.collection('login');
 		var collection_sessions = mongo.collection('sessions');
 		var collection_containers = mongo.collection('containers');
 
-
 		//Destroy all containers record
-
-		collection_containers.remove({uid : uid},	
-										function(err, response) {
-									   		if (response) {
-									   			//console.log("DELETED COUNT : " + response.deletedCount);
-												//json_responses.statusContainersDeleted = 1000;
-									   		}
-									   		else {
-												//json_responses.statusContainersDeleted= 999;
-												console.log("wrong!");
-									   		} 
-									   });
-
+		collection_containers.remove(
+						{uid : uid},	
+						function(err, response) {
+					   		if (response) {
+					   			console.log("container records deleted...");
+					   		}
+					   		else {
+								console.log("Something went wrong while deleting containers...!");
+							} 
+		});
 
 
 		//Making HTTP call to own API /logoutall just to try http req concept, don't try in production!
@@ -44,7 +42,7 @@ exports.deregisteruser = function(req, res) {
 		});
 
 		var options = {
-		  hostname: 'localhost',
+		  hostname: '10.3.16.163',
 		  port: 3000,
 		  path: '/logoutall',
 		  method: 'POST',
@@ -62,7 +60,6 @@ exports.deregisteruser = function(req, res) {
 
 		  });
 		  res.on('end', () => {
-		  	//json_responses.statusSessionsDeleted=1000;
 		    console.log('No more data in response.');
 		    
 		  });
@@ -70,50 +67,42 @@ exports.deregisteruser = function(req, res) {
 
 		req.on('error', (e) => {
 		  console.log(`problem with request: ${e.message}`);
-		  //json_responses.statusSessionsDeleted= 999;
 		});
 
-		// write data to request body
 		req.write(postData);
 		req.end();
 
 
-
 		//Destroy user account records	
-		collection_login.remove({uid : uid}, 
-								function(err){
-							   			
-							   		if (err)
-							   			 	flag = false; 
-							   			 console.log("err : " + err);
-											//json_responses.statusLoginsDeleted= 1000;
-										//res.send(json_responses);
-
-							   		});	
+		collection_login.remove(
+				{uid : uid}, 
+				function(err){			   			
+			   		if (err) {
+			   			flag = false; 
+			   			console.log("Something wrong while deleting login records : " + err);
+			   		}
+		});	
 
 		if (flag)
 			json_responses = { "statusCode" :  1000}
 		else 
 			json_responses = { "statusCode" :  999}
 
-		console.log(json_responses);
 	 	res.send(json_responses);	
 	});
 }
 
 
 exports.updatetoken = function(req, res) {
-	//var uid = req.param("uid");
-	//var device_token = req.param("device_token");
 	var uid = req.body.uid;
 	var device_token = req.body.device_token;
 
-	console.log(req.body.uid);
-	console.log(req.body.device_token);
+	console.log('API Called updatetoken...');
+	console.log(req.param);
+
 	var json_responses;
 
 	mongo.connect(mongoURL, function() {
-		console.log('CONNECTED TO MONGO AT: ' + mongoURL);
 		var collection_login = mongo.collection('login');
 
 		collection_login.update(
@@ -128,7 +117,7 @@ exports.updatetoken = function(req, res) {
 				res.send(json_responses);
 
 			} else {
-				console.log("FALSE");
+				console.log("Something wrong while updating token records...!" );
 				json_responses = {
 					"statusCode" : 999
 				};
@@ -141,5 +130,5 @@ exports.updatetoken = function(req, res) {
 
 
 exports.list = function(req, res){
-  res.send("respond with a resource");
+  res.send("Yet to be implemented!");
 };

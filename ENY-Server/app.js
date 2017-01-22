@@ -9,7 +9,7 @@ var user			= require('./routes/user');
 var http			= require('http');
 var path			= require('path');
 
-var mongoSessionConnectURL = "mongodb://localhost:27017/EnyDatabaseMongoDB";
+var mongoSessionConnectURL = "mongodb://10.3.16.163:27017/EnyDatabaseMongoDB";
 //var mongoSessionConnectURL = "mongodb://heroku_x4rwn6l8:nc5ua8377vca7ihtdt1pni05c9@ds117909.mlab.com:17909/heroku_x4rwn6l8";
 var expressSession = require("express-session");
 var mongoStore = require("connect-mongo")(expressSession);
@@ -57,10 +57,12 @@ app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/homepage',login.redirectToHomepage);
 app.get('/containerstatus/:uid', container.containerstatus);
+app.get('/uicontainerstatus', container.uicontainerstatus);
+
 //app.get('/buttonclicked', eny.buttonclicked);
 
 //POST REQUESTS
-app.post('/checklogin', login.checkLogin);
+app.post('/checklogin', login.checklogin);
 app.post('/mobilelogin', login.mobilelogin);
 app.post('/register', login.register);
 
