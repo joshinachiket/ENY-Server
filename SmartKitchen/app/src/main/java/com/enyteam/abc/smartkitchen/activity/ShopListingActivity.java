@@ -102,6 +102,7 @@ public class ShopListingActivity extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> parent, final View view, int position, long id) {
                 AlertDialog.Builder dialog = new AlertDialog.Builder(ShopListingActivity.this);
                 dialog.setTitle(R.string.confirm_preferrence_dialog_heading);
+                dialog.setIcon(R.drawable.smart_logo_noti);
                 dialog.setMessage("Confirm set the store as a prefered Store?");
                 dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override

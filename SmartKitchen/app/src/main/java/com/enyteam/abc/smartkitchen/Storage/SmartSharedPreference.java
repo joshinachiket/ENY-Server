@@ -12,6 +12,7 @@ public class SmartSharedPreference {
     public static final String STORE_PHONE = "STORE_PHONE";
     public static final String STORE_CUST_NAME = "CUST_NAME";
     public static final String STORE_CUST_ADDR = "CUST_ADDR";
+    public static final String NEURA_ID = "NEURA";
 
     public SmartSharedPreference() {
         super();
@@ -46,6 +47,8 @@ public class SmartSharedPreference {
         editor.remove(USER_NAME);
         editor.remove(STORE_KEY);
         editor.remove(STORE_PHONE);
+        editor.remove(STORE_CUST_NAME);
+        editor.remove(STORE_CUST_ADDR);
         editor.commit();
     }
 
@@ -141,4 +144,28 @@ public class SmartSharedPreference {
         settings = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         return settings.getString(STORE_CUST_ADDR,"");
     }
+
+    public void enableNeura(Context context, boolean bool) {
+        SharedPreferences settings;
+        SharedPreferences.Editor editor;
+        settings = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        editor = settings.edit();
+        if(bool) {
+            editor.putInt(NEURA_ID, 1);
+        } else {
+            editor.putInt(NEURA_ID,0);
+        }
+        editor.commit();
+    }
+
+    public boolean isNeuraEnable(Context context) {
+        SharedPreferences settings;
+        settings = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        if(settings.getInt(NEURA_ID,0)==0) {
+            return  false;
+        }else {
+            return  true;
+        }
+    }
+
 }

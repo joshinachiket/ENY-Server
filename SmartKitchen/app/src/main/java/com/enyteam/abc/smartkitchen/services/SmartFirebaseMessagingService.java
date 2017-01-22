@@ -37,7 +37,6 @@ public class SmartFirebaseMessagingService extends FirebaseMessagingService {
 
     private static final String TAG = "FCM_SERVICE";
 
-
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         sendButtonPressedMessage(remoteMessage);
